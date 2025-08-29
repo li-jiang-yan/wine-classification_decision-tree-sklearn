@@ -1,7 +1,8 @@
 from sklearn import datasets
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+import matplotlib.pyplot as plt
 
 # Load dataset
 wine = datasets.load_wine()
@@ -20,3 +21,7 @@ clf.fit(X_train, y_train)
 
 # Classify test data using model
 y_pred = clf.predict(X_test)
+
+# Plot the decision tree model trained
+plot_tree(clf, feature_names=wine.feature_names)
+plt.show()
