@@ -3,6 +3,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 
 # Load dataset
 wine = datasets.load_wine()
@@ -25,3 +26,11 @@ y_pred = clf.predict(X_test)
 # Plot the decision tree model trained
 plot_tree(clf, feature_names=wine.feature_names)
 plt.show()
+
+# Compute the confusion matrix
+disp = ConfusionMatrixDisplay(confusion_matrix=confusion_matrix(y_test, y_pred), display_labels=wine.target_names)
+disp.plot()
+plt.show()
+
+# Get the model classification metrics (will only show after the confusion matrix display window is closed)
+print(classification_report(y_test, y_pred, target_names=wine.target_names))
