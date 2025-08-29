@@ -4,9 +4,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
 # Load dataset
-iris = datasets.load_wine()
-X = iris.data
-y = iris.target
+wine = datasets.load_wine()
+X = wine.data
+y = wine.target
 
 # Scale data
 X = StandardScaler().fit(X).transform(X)
